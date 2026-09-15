@@ -17,7 +17,7 @@ A full-stack productivity Todo app built with React, Redux Toolkit, RTK Query, E
 ## Screenshots
 
 ### Dashboard
-![TaskFlow Dashboard](./screenshots/dashboard.png)
+![TaskFlow Dashboard](./screenshots/Dashboard.png)
 
 ### Dark Mode
 ![TaskFlow Dark Mode](./screenshots/dark-mode.png)
