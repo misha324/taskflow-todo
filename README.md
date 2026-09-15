@@ -14,7 +14,16 @@ A full-stack productivity Todo app built with React, Redux Toolkit, RTK Query, E
 - Dark mode and English/Urdu language support
 - Responsive mobile sidebar
 - Reduced-motion accessibility support
+## Screenshots
 
+### Dashboard
+![TaskFlow Dashboard](./screenshots/dashboard.png)
+
+### Dark Mode
+![TaskFlow Dark Mode](./screenshots/dark-mode.png)
+
+### Mobile Responsive
+![TaskFlow Mobile](./screenshots/mobile.png)
 ## Run frontend
 
 ```bash
