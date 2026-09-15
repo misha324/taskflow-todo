@@ -40,3 +40,6 @@ Frontend API URL is configured through `.env` using `.env.example` as the templa
 TaskFlow now runs as a frontend-only React application. Tasks are stored per user in browser `localStorage`, so no Express server, SQLite database, Railway, or Render backend is required. The app can be deployed as a static site such as GitHub Pages or Vercel.
 
 **Data note:** localStorage is browser/device specific. It is suitable for a portfolio/demo application, not secure multi-device production authentication.
+## Live Demo
+
+https://taskflow-todo-beta.vercel.app
