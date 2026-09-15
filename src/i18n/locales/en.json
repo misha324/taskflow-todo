@@ -1,0 +1,82 @@
+{
+  "appTitle": "Todo App",
+  "appSubtitle": "Manage your tasks efficiently",
+  "loggedInAs": "Logged in as",
+
+  "online": "Online",
+  "offline": "Offline",
+
+  "light": "Light",
+  "dark": "Dark",
+
+  "logout": "Logout",
+
+  "addNewTask": "Add New Task",
+  "editTask": "Edit Task",
+
+  "task": "Task",
+  "category": "Category",
+  "dueDate": "Due Date",
+  "priority": "Priority",
+
+  "enterTask": "Enter your task",
+  "categoryPlaceholder": "Enter category",
+
+  "low": "Low",
+  "medium": "Medium",
+  "high": "High",
+
+  "addTask": "Add Task",
+  "updateTask": "Update Task",
+  "cancel": "Cancel",
+  "saving": "Saving...",
+
+  "searchTasks": "Search tasks...",
+  "searching": "Searching...",
+
+  "allTasks": "All Tasks",
+  "active": "Active",
+  "completed": "Completed",
+  "allCategories": "All Categories",
+
+  "newest": "Newest",
+  "oldest": "Oldest",
+  "prioritySort": "Priority",
+  "dueDateSort": "Due Date",
+
+  "total": "Total",
+  "progress": "Progress",
+  "overallProgress": "Overall Progress",
+
+  "yourTasks": "Your Tasks",
+  "shown": "shown",
+
+  "noTasksFound": "No tasks found",
+  "noTasksDescription": "Try adding a new task or changing your filters.",
+
+  "clearCompleted": "Clear Completed",
+
+  "delete": "Delete",
+
+  "taskAdded": "Task added successfully.",
+  "taskUpdated": "Task updated successfully.",
+  "taskDeleted": "Task deleted successfully.",
+  "completedCleared": "Completed tasks cleared successfully.",
+
+  "pleaseEnterTask": "Please enter a task.",
+  "pleaseEnterCategory": "Please enter a category.",
+  "userNotFound": "User information was not found.",
+
+  "failedAdd": "Failed to add task.",
+  "failedUpdate": "Failed to update task.",
+  "failedDelete": "Failed to delete task.",
+  "failedClear": "Failed to clear completed tasks.",
+
+  "loadingTasks": "Loading tasks...",
+  "gettingTasks": "Please wait while we get your tasks.",
+
+  "backendFailed": "Backend connection failed",
+  "backendDescription": "Please make sure the backend server is running.",
+
+  "taskCompleted": "Task completed!"
+}

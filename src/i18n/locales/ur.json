@@ -1,0 +1,82 @@
+{
+  "appTitle": "ٹو ڈو ایپ",
+  "appSubtitle": "اپنے کام آسانی سے منظم کریں",
+  "loggedInAs": "لاگ اِن ہیں",
+
+  "online": "آن لائن",
+  "offline": "آف لائن",
+
+  "light": "لائٹ",
+  "dark": "ڈارک",
+
+  "logout": "لاگ آؤٹ",
+
+  "addNewTask": "نیا کام شامل کریں",
+  "editTask": "کام میں ترمیم کریں",
+
+  "task": "کام",
+  "category": "کیٹیگری",
+  "dueDate": "آخری تاریخ",
+  "priority": "ترجیح",
+
+  "enterTask": "اپنا کام لکھیں",
+  "categoryPlaceholder": "کیٹیگری لکھیں",
+
+  "low": "کم",
+  "medium": "درمیانی",
+  "high": "زیادہ",
+
+  "addTask": "کام شامل کریں",
+  "updateTask": "کام اپڈیٹ کریں",
+  "cancel": "منسوخ کریں",
+  "saving": "محفوظ ہو رہا ہے...",
+
+  "searchTasks": "کام تلاش کریں...",
+  "searching": "تلاش جاری ہے...",
+
+  "allTasks": "تمام کام",
+  "active": "فعال",
+  "completed": "مکمل",
+  "allCategories": "تمام کیٹیگریز",
+
+  "newest": "نئے پہلے",
+  "oldest": "پرانے پہلے",
+  "prioritySort": "ترجیح",
+  "dueDateSort": "آخری تاریخ",
+
+  "total": "کل",
+  "progress": "پیش رفت",
+  "overallProgress": "مجموعی پیش رفت",
+
+  "yourTasks": "آپ کے کام",
+  "shown": "دکھائے جا رہے ہیں",
+
+  "noTasksFound": "کوئی کام نہیں ملا",
+  "noTasksDescription": "نیا کام شامل کریں یا اپنے فلٹرز تبدیل کریں۔",
+
+  "clearCompleted": "مکمل کام ختم کریں",
+
+  "delete": "حذف کریں",
+
+  "taskAdded": "کام کامیابی سے شامل ہو گیا۔",
+  "taskUpdated": "کام کامیابی سے اپڈیٹ ہو گیا۔",
+  "taskDeleted": "کام کامیابی سے حذف ہو گیا۔",
+  "completedCleared": "مکمل کام کامیابی سے ختم کر دیے گئے۔",
+
+  "pleaseEnterTask": "براہِ کرم کام درج کریں۔",
+  "pleaseEnterCategory": "براہِ کرم کیٹیگری درج کریں۔",
+  "userNotFound": "صارف کی معلومات نہیں ملیں۔",
+
+  "failedAdd": "کام شامل نہیں ہو سکا۔",
+  "failedUpdate": "کام اپڈیٹ نہیں ہو سکا۔",
+  "failedDelete": "کام حذف نہیں ہو سکا۔",
+  "failedClear": "مکمل کام ختم نہیں ہو سکے۔",
+
+  "loadingTasks": "کام لوڈ ہو رہے ہیں...",
+  "gettingTasks": "براہِ کرم انتظار کریں، آپ کے کام حاصل کیے جا رہے ہیں۔",
+
+  "backendFailed": "بیک اینڈ سے کنکشن ناکام ہو گیا",
+  "backendDescription": "براہِ کرم یقینی بنائیں کہ بیک اینڈ سرور چل رہا ہے۔",
+
+  "taskCompleted": "کام مکمل ہو گیا!"
+}
