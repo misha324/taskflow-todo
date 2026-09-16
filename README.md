@@ -32,7 +32,7 @@ A full-stack productivity Todo app built with React, Redux Toolkit, RTK Query, E
 ![TaskFlow Dark Mode](./screenshots/dark-mode.png)
 
 ### Urdu / RTL Mode
-![TaskFlow Urdu](./screenshots/urdu.png)shots/mobile.png)
+![TaskFlow Urdu](./screenshots/urdu.png)
 ## Run frontend
 
 ```bash
