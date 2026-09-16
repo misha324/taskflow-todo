@@ -3351,3 +3351,347 @@ html[dir="rtl"] .task-categories-row {
     gap: 6px;
   }
 }
+/* =========================================================
+   TASKFLOW 3D UI LAYER
+   Visual upgrade only - functionality unchanged
+========================================================= */
+
+/* ---------- MAIN DEPTH ---------- */
+
+.app {
+  perspective: 1200px;
+}
+
+.workspace-shell {
+  transform-style: preserve-3d;
+}
+
+
+/* ---------- SIDEBAR 3D ---------- */
+
+.app-sidebar {
+  transform-style: preserve-3d;
+  box-shadow:
+    10px 0 35px rgba(15, 23, 42, 0.08),
+    4px 0 0 rgba(255, 255, 255, 0.7) inset;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.app-sidebar:hover {
+  box-shadow:
+    14px 0 45px rgba(15, 23, 42, 0.12),
+    4px 0 0 rgba(255, 255, 255, 0.8) inset;
+}
+
+
+/* ---------- BRAND 3D ---------- */
+
+.brand-mark {
+  transform: translateZ(12px);
+  box-shadow:
+    0 10px 18px rgba(17, 24, 39, 0.18),
+    0 3px 0 rgba(0, 0, 0, 0.15);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.brand-mark:hover {
+  transform:
+    translateY(-3px)
+    translateZ(18px)
+    rotateX(5deg)
+    rotateY(-5deg);
+
+  box-shadow:
+    0 16px 28px rgba(17, 24, 39, 0.22),
+    0 4px 0 rgba(0, 0, 0, 0.15);
+}
+
+
+/* ---------- SIDEBAR ITEMS ---------- */
+
+.sidebar-item {
+  transform-style: preserve-3d;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.sidebar-item:hover {
+  transform:
+    translateX(4px)
+    translateZ(8px);
+
+  box-shadow:
+    4px 6px 14px rgba(15, 23, 42, 0.08);
+}
+
+.sidebar-item.active {
+  transform:
+    translateX(3px)
+    translateZ(10px);
+
+  box-shadow:
+    5px 7px 16px rgba(15, 23, 42, 0.10);
+}
+
+
+/* ---------- HEADER ---------- */
+
+.workspace-shell .app-header {
+  transform-style: preserve-3d;
+  box-shadow:
+    0 8px 25px rgba(15, 23, 42, 0.05);
+}
+
+
+/* ---------- MAIN SECTIONS ---------- */
+
+.task-form-section,
+.controls-section,
+.progress-section,
+.task-list-section {
+  transform-style: preserve-3d;
+
+  box-shadow:
+    0 12px 28px rgba(15, 23, 42, 0.07),
+    0 2px 0 rgba(255, 255, 255, 0.9) inset;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.task-form-section:hover,
+.controls-section:hover,
+.progress-section:hover,
+.task-list-section:hover {
+  transform:
+    translateY(-3px)
+    translateZ(8px);
+
+  box-shadow:
+    0 18px 38px rgba(15, 23, 42, 0.10),
+    0 2px 0 rgba(255, 255, 255, 0.9) inset;
+}
+
+
+/* ---------- STAT CARDS ---------- */
+
+.stat-card {
+  transform-style: preserve-3d;
+
+  box-shadow:
+    0 10px 22px rgba(15, 23, 42, 0.08),
+    0 3px 0 rgba(15, 23, 42, 0.04);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.stat-card:hover {
+  transform:
+    translateY(-7px)
+    translateZ(12px)
+    rotateX(2deg)
+    rotateY(-2deg);
+
+  box-shadow:
+    0 20px 35px rgba(15, 23, 42, 0.13),
+    0 5px 0 rgba(15, 23, 42, 0.05);
+}
+
+.stat-number {
+  transform: translateZ(8px);
+}
+
+
+/* ---------- TASK CARDS ---------- */
+
+.task-card {
+  transform-style: preserve-3d;
+
+  box-shadow:
+    0 8px 18px rgba(15, 23, 42, 0.06),
+    0 2px 0 rgba(15, 23, 42, 0.035);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.task-card:hover {
+  transform:
+    translateY(-5px)
+    translateZ(10px)
+    rotateX(1deg)
+    rotateY(-1deg);
+
+  box-shadow:
+    0 18px 30px rgba(15, 23, 42, 0.11),
+    0 4px 0 rgba(15, 23, 42, 0.04);
+}
+
+.task-content {
+  transform: translateZ(6px);
+}
+
+.task-category,
+.task-date,
+.task-priority {
+  transform: translateZ(8px);
+}
+
+
+/* ---------- BUTTONS ---------- */
+
+button {
+  transform-style: preserve-3d;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+button:not(:disabled):hover {
+  transform: translateY(-2px) translateZ(4px);
+}
+
+button:not(:disabled):active {
+  transform:
+    translateY(2px)
+    translateZ(0);
+}
+
+
+/* ---------- INPUTS ---------- */
+
+.form-group input,
+.form-group select,
+.search-input {
+  box-shadow:
+    inset 0 2px 5px rgba(15, 23, 42, 0.04),
+    0 2px 5px rgba(15, 23, 42, 0.03);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.search-input:focus {
+  transform: translateZ(4px);
+
+  box-shadow:
+    0 5px 14px rgba(15, 23, 42, 0.08),
+    inset 0 1px 3px rgba(15, 23, 42, 0.03);
+}
+
+
+/* ---------- PROFILE ---------- */
+
+.sidebar-profile {
+  transform-style: preserve-3d;
+
+  box-shadow:
+    0 7px 15px rgba(15, 23, 42, 0.06);
+}
+
+.sidebar-profile:hover {
+  transform:
+    translateY(-3px)
+    translateZ(8px);
+}
+
+.profile-avatar {
+  transform: translateZ(10px);
+}
+
+
+/* ---------- PROGRESS BAR ---------- */
+
+.progress-bar {
+  box-shadow:
+    inset 0 2px 4px rgba(15, 23, 42, 0.10);
+}
+
+.progress-fill {
+  box-shadow:
+    0 3px 8px rgba(15, 23, 42, 0.12);
+}
+
+
+/* ---------- DARK MODE ---------- */
+
+.app.dark-mode .task-form-section,
+.app.dark-mode .controls-section,
+.app.dark-mode .stat-card,
+.app.dark-mode .progress-section,
+.app.dark-mode .task-list-section {
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.25),
+    0 2px 0 rgba(255, 255, 255, 0.025) inset;
+}
+
+.app.dark-mode .task-card {
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.25),
+    0 2px 0 rgba(255, 255, 255, 0.025) inset;
+}
+
+.app.dark-mode .task-card:hover {
+  box-shadow:
+    0 20px 38px rgba(0, 0, 0, 0.35),
+    0 3px 0 rgba(255, 255, 255, 0.03) inset;
+}
+
+.app.dark-mode .stat-card:hover {
+  box-shadow:
+    0 22px 40px rgba(0, 0, 0, 0.38);
+}
+
+
+/* ---------- REDUCED MOTION ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .stat-card,
+  .task-card,
+  .sidebar-item,
+  .task-form-section,
+  .controls-section,
+  .progress-section,
+  .task-list-section,
+  button {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 760px) {
+
+  .app {
+    perspective: none;
+  }
+
+  .stat-card:hover,
+  .task-card:hover,
+  .task-form-section:hover,
+  .controls-section:hover,
+  .progress-section:hover,
+  .task-list-section:hover {
+    transform: translateY(-2px);
+  }
+
+  .sidebar-item:hover {
+    transform: translateX(2px);
+  }
+}
