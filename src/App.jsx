@@ -1,4 +1,3 @@
-
 import {
   useDispatch,
   useSelector,
@@ -61,37 +60,17 @@ import "./App.css";
 // ==========================================
 
 function subscribeToOnlineStatus(callback) {
-
-  window.addEventListener(
-    "online",
-    callback
-  );
-
-  window.addEventListener(
-    "offline",
-    callback
-  );
+  window.addEventListener("online", callback);
+  window.addEventListener("offline", callback);
 
   return () => {
-
-    window.removeEventListener(
-      "online",
-      callback
-    );
-
-    window.removeEventListener(
-      "offline",
-      callback
-    );
-
+    window.removeEventListener("online", callback);
+    window.removeEventListener("offline", callback);
   };
 }
 
-
 function getOnlineStatus() {
-
   return navigator.onLine;
-
 }
 
 
@@ -100,68 +79,44 @@ function getOnlineStatus() {
 // ==========================================
 
 function getCurrentUser() {
-
   try {
-
-    // First priority:
-    // sessionStorage because Login stores
-    // the current logged-in user here.
-
     const sessionUser =
       sessionStorage.getItem("user");
 
     if (sessionUser) {
-
-      const parsedUser =
-        JSON.parse(sessionUser);
+      const parsedUser = JSON.parse(sessionUser);
 
       if (
         parsedUser &&
         typeof parsedUser === "object"
       ) {
-
         return parsedUser;
-
       }
-
     }
-
-
-    // Fallback:
-    // localStorage if a user exists there.
 
     const localUser =
       localStorage.getItem("user");
 
     if (localUser) {
-
-      const parsedUser =
-        JSON.parse(localUser);
+      const parsedUser = JSON.parse(localUser);
 
       if (
         parsedUser &&
         typeof parsedUser === "object"
       ) {
-
         return parsedUser;
-
       }
-
     }
 
     return null;
-
   } catch (error) {
-
     console.error(
       "Failed to load current user:",
       error
     );
 
     return null;
-
   }
-
 }
 
 
@@ -170,14 +125,14 @@ function getCurrentUser() {
 // ==========================================
 
 function TodoApp() {
-
-  const navigate =
-    useNavigate();
+  const navigate = useNavigate();
 
   const {
     t,
     i18n,
   } = useTranslation();
+
+  const dispatch = useDispatch();
 
 
   // ========================================
@@ -187,14 +142,7 @@ function TodoApp() {
   const [
     currentUser,
     setCurrentUser,
-  ] = useState(
-    () => getCurrentUser()
-  );
-
-
-  // ========================================
-  // CURRENT USER EMAIL
-  // ========================================
+  ] = useState(() => getCurrentUser());
 
   const currentUserEmail =
     currentUser?.email
@@ -203,62 +151,30 @@ function TodoApp() {
 
 
   // ========================================
-  // DEBUG CURRENT USER
-  // ========================================
-
-  useEffect(() => {
-
-    console.log(
-      "Current user:",
-      currentUser
-    );
-
-    console.log(
-      "Current user email:",
-      currentUserEmail
-    );
-
-  }, [
-    currentUser,
-    currentUserEmail,
-  ]);
-
-
-  // ========================================
   // UPDATE USER WHEN STORAGE CHANGES
   // ========================================
 
   useEffect(() => {
-
     const updateCurrentUser = () => {
-
-      setCurrentUser(
-        getCurrentUser()
-      );
-
+      setCurrentUser(getCurrentUser());
     };
-
 
     window.addEventListener(
       "storage",
       updateCurrentUser
     );
 
-
     return () => {
-
       window.removeEventListener(
         "storage",
         updateCurrentUser
       );
-
     };
-
   }, []);
 
 
   // ========================================
-  // RTK QUERY - GET TODOS
+  // RTK QUERY
   // ========================================
 
   const {
@@ -275,29 +191,7 @@ function TodoApp() {
 
 
   // ========================================
-  // DEBUG API TODOS
-  // ========================================
-
-  useEffect(() => {
-
-    console.log(
-      "Current user email sent to API:",
-      currentUserEmail
-    );
-
-    console.log(
-      "Todos received from API:",
-      apiTodos
-    );
-
-  }, [
-    currentUserEmail,
-    apiTodos,
-  ]);
-
-
-  // ========================================
-  // RTK QUERY MUTATIONS
+  // RTK MUTATIONS
   // ========================================
 
   const [
@@ -318,34 +212,23 @@ function TodoApp() {
 
 
   // ========================================
-  // REDUX THEME
+  // THEME
   // ========================================
-
-  const dispatch =
-    useDispatch();
 
   const darkMode =
     useSelector(
-      (state) =>
-        state.ui.darkMode
+      (state) => state.ui.darkMode
     );
 
 
   // ========================================
-  // ACCESSIBLE FORM IDS
+  // FORM IDS
   // ========================================
 
-  const taskId =
-    useId();
-
-  const categoryId =
-    useId();
-
-  const dateId =
-    useId();
-
-  const priorityId =
-    useId();
+  const taskId = useId();
+  const categoryId = useId();
+  const dateId = useId();
+  const priorityId = useId();
 
 
   // ========================================
@@ -374,14 +257,17 @@ function TodoApp() {
 
 
   // ========================================
-  // SIDEBAR / WORKSPACE STATE
+  // SIDEBAR / ACTIVE VIEW
   // ========================================
 
   const [
     activeView,
     setActiveView,
   ] = useState(
-    () => localStorage.getItem("todoActiveView") || "dashboard"
+    () =>
+      localStorage.getItem(
+        "todoActiveView"
+      ) || "dashboard"
   );
 
   const [
@@ -390,12 +276,15 @@ function TodoApp() {
   ] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem("todoActiveView", activeView);
+    localStorage.setItem(
+      "todoActiveView",
+      activeView
+    );
   }, [activeView]);
 
 
   // ========================================
-  // FILTER / SEARCH STATE
+  // FILTER / SEARCH
   // ========================================
 
   const [
@@ -420,7 +309,7 @@ function TodoApp() {
 
 
   // ========================================
-  // EDIT / NOTIFICATION STATE
+  // EDIT / NOTIFICATION
   // ========================================
 
   const [
@@ -460,56 +349,39 @@ function TodoApp() {
 
 
   // ========================================
-  // NORMALIZE API TODOS
+  // NORMALIZE TODOS
   // ========================================
 
-  const tasks =
-    useMemo(() => {
+  const tasks = useMemo(() => {
+    if (!apiTodos) {
+      return [];
+    }
 
-      if (!apiTodos) {
+    return apiTodos.map((todo) => ({
+      id: todo.id,
 
-        return [];
+      text: todo.title,
 
-      }
+      completed:
+        Boolean(todo.completed),
 
-      return apiTodos.map(
-        (todo) => ({
+      dueDate:
+        todo.dueDate || "",
 
-          id:
-            todo.id,
+      priority:
+        todo.priority || "medium",
 
-          text:
-            todo.title,
+      category:
+        todo.category || "",
 
-          completed:
-            Boolean(
-              todo.completed
-            ),
+      createdAt:
+        todo.createdAt ||
+        new Date().toISOString(),
 
-          dueDate:
-            todo.dueDate || "",
-
-          priority:
-            todo.priority ||
-            "medium",
-
-          category:
-            todo.category || "",
-
-          createdAt:
-            todo.createdAt ||
-            new Date().toISOString(),
-
-          userEmail:
-            todo.userEmail ||
-            "",
-
-        })
-      );
-
-    }, [
-      apiTodos,
-    ]);
+      userEmail:
+        todo.userEmail || "",
+    }));
+  }, [apiTodos]);
 
 
   // ========================================
@@ -523,7 +395,7 @@ function TodoApp() {
 
 
   // ========================================
-  // ONLINE / OFFLINE
+  // ONLINE STATUS
   // ========================================
 
   const isOnline =
@@ -538,250 +410,160 @@ function TodoApp() {
   // TASK ACTION
   // ========================================
 
-  const taskAction =
-    async (
-      previousState,
+  const taskAction = async (
+    previousState,
+    formData
+  ) => {
+    const text =
       formData
-    ) => {
+        .get("taskText")
+        ?.toString()
+        .trim() || "";
 
-      const text =
-        formData
-          .get("taskText")
-          ?.toString()
-          .trim() || "";
+    const selectedDate =
+      formData
+        .get("dueDate")
+        ?.toString() || "";
 
-      const selectedDate =
-        formData
-          .get("dueDate")
-          ?.toString() || "";
+    const selectedPriority =
+      formData
+        .get("priority")
+        ?.toString() ||
+      "medium";
 
-      const selectedPriority =
-        formData
-          .get("priority")
-          ?.toString() ||
-        "medium";
-
-      const selectedCategory =
-        formData
-          .get("category")
-          ?.toString()
-          .trim() || "";
+    const selectedCategory =
+      formData
+        .get("category")
+        ?.toString()
+        .trim() || "";
 
 
-      // ======================================
-      // VALIDATION
-      // ======================================
+    // VALIDATION
 
-      if (!text) {
+    if (!text) {
+      return {
+        success: false,
+        message: t("pleaseEnterTask"),
+      };
+    }
 
-        return {
-          success: false,
-          message:
-            t("pleaseEnterTask"),
-        };
+    if (!selectedCategory) {
+      return {
+        success: false,
+        message: t("pleaseEnterCategory"),
+      };
+    }
 
-      }
-
-
-      if (!selectedCategory) {
-
-        return {
-          success: false,
-          message:
-            t("pleaseEnterCategory"),
-        };
-
-      }
+    if (!currentUserEmail) {
+      return {
+        success: false,
+        message: t("userNotFound"),
+      };
+    }
 
 
-      if (!currentUserEmail) {
+    // UPDATE
 
-        return {
-          success: false,
-          message:
-            t("userNotFound"),
-        };
-
-      }
-
-
-      // ======================================
-      // UPDATE EXISTING TASK
-      // ======================================
-
-      if (editId !== null) {
-
-        try {
-
-          await updateTodo({
-
-            id:
-              editId,
-
-            title:
-              text,
-
-            priority:
-              selectedPriority,
-
-            category:
-              selectedCategory,
-
-            dueDate:
-              selectedDate,
-
-            userEmail:
-              currentUserEmail,
-
-          }).unwrap();
-
-
-          setEditId(null);
-
-          setTaskText("");
-
-          setDueDate("");
-
-          setPriority("medium");
-
-          setCategory("");
-
-
-          setTaskMessage(
-            t("taskUpdated")
-          );
-
-
-          if (
-            messageTimerRef.current
-          ) {
-
-            clearTimeout(
-              messageTimerRef.current
-            );
-
-          }
-
-
-          messageTimerRef.current =
-            setTimeout(() => {
-
-              setTaskMessage("");
-
-            }, 2500);
-
-
-          return {
-            success: true,
-            message: "",
-          };
-
-        } catch (error) {
-
-          console.error(
-            "Failed to update task:",
-            error
-          );
-
-          return {
-            success: false,
-            message:
-              t("failedUpdate"),
-          };
-
-        }
-
-      }
-
-
-      // ======================================
-      // ADD NEW TASK
-      // ======================================
-
+    if (editId !== null) {
       try {
-
-        await addTodo({
-
-          title:
-            text,
-
-          priority:
-            selectedPriority,
-
-          category:
-            selectedCategory,
-
-          dueDate:
-            selectedDate,
-
-          userEmail:
-            currentUserEmail,
-
+        await updateTodo({
+          id: editId,
+          title: text,
+          priority: selectedPriority,
+          category: selectedCategory,
+          dueDate: selectedDate,
+          userEmail: currentUserEmail,
         }).unwrap();
 
-      } catch (error) {
+        setEditId(null);
+        setTaskText("");
+        setDueDate("");
+        setPriority("medium");
+        setCategory("");
 
+        setTaskMessage(
+          t("taskUpdated")
+        );
+
+        if (messageTimerRef.current) {
+          clearTimeout(
+            messageTimerRef.current
+          );
+        }
+
+        messageTimerRef.current =
+          setTimeout(() => {
+            setTaskMessage("");
+          }, 2500);
+
+        return {
+          success: true,
+          message: "",
+        };
+      } catch (error) {
         console.error(
-          "Failed to add task:",
+          "Failed to update task:",
           error
         );
 
         return {
           success: false,
-          message:
-            t("failedAdd"),
+          message: t("failedUpdate"),
         };
-
       }
+    }
 
 
-      // ======================================
-      // RESET FORM
-      // ======================================
+    // ADD
 
-      setTaskText("");
-
-      setDueDate("");
-
-      setPriority("medium");
-
-      setCategory("");
-
-
-      // ======================================
-      // SUCCESS MESSAGE
-      // ======================================
-
-      setTaskMessage(
-        t("taskAdded")
+    try {
+      await addTodo({
+        title: text,
+        priority: selectedPriority,
+        category: selectedCategory,
+        dueDate: selectedDate,
+        userEmail: currentUserEmail,
+      }).unwrap();
+    } catch (error) {
+      console.error(
+        "Failed to add task:",
+        error
       );
 
-
-      if (
-        messageTimerRef.current
-      ) {
-
-        clearTimeout(
-          messageTimerRef.current
-        );
-
-      }
-
-
-      messageTimerRef.current =
-        setTimeout(() => {
-
-          setTaskMessage("");
-
-        }, 2500);
-
-
       return {
-        success: true,
-        message: "",
+        success: false,
+        message: t("failedAdd"),
       };
+    }
 
+
+    // RESET
+
+    setTaskText("");
+    setDueDate("");
+    setPriority("medium");
+    setCategory("");
+
+    setTaskMessage(
+      t("taskAdded")
+    );
+
+    if (messageTimerRef.current) {
+      clearTimeout(
+        messageTimerRef.current
+      );
+    }
+
+    messageTimerRef.current =
+      setTimeout(() => {
+        setTaskMessage("");
+      }, 2500);
+
+    return {
+      success: true,
+      message: "",
     };
+  };
 
 
   // ========================================
@@ -806,14 +588,9 @@ function TodoApp() {
   // ========================================
 
   useEffect(() => {
-
     document.title =
       `${t("appTitle")} (${tasks.length})`;
-
-  }, [
-    tasks.length,
-    t,
-  ]);
+  }, [tasks.length, t]);
 
 
   // ========================================
@@ -821,7 +598,6 @@ function TodoApp() {
   // ========================================
 
   useEffect(() => {
-
     const direction =
       i18n.language === "ur"
         ? "rtl"
@@ -832,10 +608,7 @@ function TodoApp() {
 
     document.documentElement.lang =
       i18n.language;
-
-  }, [
-    i18n.language,
-  ]);
+  }, [i18n.language]);
 
 
   // ========================================
@@ -843,52 +616,35 @@ function TodoApp() {
   // ========================================
 
   useEffect(() => {
-
     if (
       editId !== null &&
       taskInputRef.current
     ) {
-
       taskInputRef.current.focus();
-
     }
-
-  }, [
-    editId,
-  ]);
+  }, [editId]);
 
 
   // ========================================
-  // CLEANUP TIMERS
+  // CLEANUP
   // ========================================
 
   useEffect(() => {
-
     return () => {
-
-      if (
-        messageTimerRef.current
-      ) {
-
+      if (messageTimerRef.current) {
         clearTimeout(
           messageTimerRef.current
         );
-
       }
-
 
       if (
         notificationTimerRef.current
       ) {
-
         clearTimeout(
           notificationTimerRef.current
         );
-
       }
-
     };
-
   }, []);
 
 
@@ -897,23 +653,13 @@ function TodoApp() {
   // ========================================
 
   useLayoutEffect(() => {
-
     if (taskListRef.current) {
-
-      const height =
-        taskListRef.current
-          .offsetHeight;
-
       console.log(
         "Task list height:",
-        height
+        taskListRef.current.offsetHeight
       );
-
     }
-
-  }, [
-    tasks,
-  ]);
+  }, [tasks]);
 
 
   // ========================================
@@ -921,76 +667,55 @@ function TodoApp() {
   // ========================================
 
   const showCompletedNotification =
-    useEffectEvent(
-      (task) => {
+    useEffectEvent((task) => {
+      setCompletedTask(task);
 
-        setCompletedTask(task);
-
-
-        if (
+      if (
+        notificationTimerRef.current
+      ) {
+        clearTimeout(
           notificationTimerRef.current
-        ) {
-
-          clearTimeout(
-            notificationTimerRef.current
-          );
-
-        }
-
-
-        notificationTimerRef.current =
-          setTimeout(() => {
-
-            setCompletedTask(null);
-
-          }, 2500);
-
+        );
       }
-    );
+
+      notificationTimerRef.current =
+        setTimeout(() => {
+          setCompletedTask(null);
+        }, 2500);
+    });
 
 
   // ========================================
-  // DETECT NEWLY COMPLETED TASK
+  // DETECT NEWLY COMPLETED
   // ========================================
 
   useEffect(() => {
-
     const previousTasks =
       previousTasksRef.current;
 
-
     const newlyCompleted =
-      tasks.find(
-        (task) => {
-
-          const oldTask =
-            previousTasks.find(
-              (old) =>
-                old.id === task.id
-            );
-
-          return (
-            task.completed &&
-            oldTask &&
-            !oldTask.completed
+      tasks.find((task) => {
+        const oldTask =
+          previousTasks.find(
+            (old) =>
+              old.id === task.id
           );
 
-        }
-      );
-
+        return (
+          task.completed &&
+          oldTask &&
+          !oldTask.completed
+        );
+      });
 
     if (newlyCompleted) {
-
       showCompletedNotification(
         newlyCompleted
       );
-
     }
-
 
     previousTasksRef.current =
       tasks;
-
   }, [
     tasks,
     showCompletedNotification,
@@ -1004,7 +729,6 @@ function TodoApp() {
   const handleSubmit =
     useCallback(
       (e) => {
-
         e.preventDefault();
 
         const formData =
@@ -1013,11 +737,8 @@ function TodoApp() {
           );
 
         formAction(formData);
-
       },
-      [
-        formAction,
-      ]
+      [formAction]
     );
 
 
@@ -1026,39 +747,20 @@ function TodoApp() {
   // ========================================
 
   const handleEdit =
-    useCallback(
-      (task) => {
+    useCallback((task) => {
+      setEditId(task.id);
+      setTaskText(task.text || "");
+      setDueDate(task.dueDate || "");
+      setPriority(
+        task.priority || "medium"
+      );
+      setCategory(task.category || "");
 
-        setEditId(
-          task.id
-        );
-
-        setTaskText(
-          task.text || ""
-        );
-
-        setDueDate(
-          task.dueDate || ""
-        );
-
-        setPriority(
-          task.priority ||
-          "medium"
-        );
-
-        setCategory(
-          task.category || ""
-        );
-
-
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-
-      },
-      []
-    );
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }, []);
 
 
   // ========================================
@@ -1068,56 +770,39 @@ function TodoApp() {
   const handleDelete =
     useCallback(
       async (id) => {
-
         try {
-
           await deleteTodo({
-
             id,
-
             userEmail:
               currentUserEmail,
-
           }).unwrap();
-
 
           setTaskMessage(
             t("taskDeleted")
           );
 
-
           if (
             messageTimerRef.current
           ) {
-
             clearTimeout(
               messageTimerRef.current
             );
-
           }
-
 
           messageTimerRef.current =
             setTimeout(() => {
-
               setTaskMessage("");
-
             }, 2500);
-
         } catch (error) {
-
           console.error(
             "Failed to delete task:",
             error
           );
 
-
           setTaskMessage(
             t("failedDelete")
           );
-
         }
-
       },
       [
         deleteTodo,
@@ -1134,45 +819,30 @@ function TodoApp() {
   const handleToggle =
     useCallback(
       async (id) => {
-
         const task =
           tasks.find(
             (item) =>
               item.id === id
           );
 
-
         if (!task) {
-
           return;
-
         }
 
-
         try {
-
           await updateTodo({
-
-            id:
-              task.id,
-
+            id: task.id,
             completed:
               !task.completed,
-
             userEmail:
               currentUserEmail,
-
           }).unwrap();
-
         } catch (error) {
-
           console.error(
             "Failed to update task:",
             error
           );
-
         }
-
       },
       [
         tasks,
@@ -1189,51 +859,37 @@ function TodoApp() {
   const clearCompleted =
     useCallback(
       async () => {
-
         try {
-
           await clearCompletedTodos(
             currentUserEmail
           ).unwrap();
-
 
           setTaskMessage(
             t("completedCleared")
           );
 
-
           if (
             messageTimerRef.current
           ) {
-
             clearTimeout(
               messageTimerRef.current
             );
-
           }
-
 
           messageTimerRef.current =
             setTimeout(() => {
-
               setTaskMessage("");
-
             }, 2500);
-
         } catch (error) {
-
           console.error(
             "Failed to clear completed tasks:",
             error
           );
 
-
           setTaskMessage(
             t("failedClear")
           );
-
         }
-
       },
       [
         clearCompletedTodos,
@@ -1248,22 +904,13 @@ function TodoApp() {
   // ========================================
 
   const cancelEdit =
-    useCallback(
-      () => {
-
-        setEditId(null);
-
-        setTaskText("");
-
-        setDueDate("");
-
-        setPriority("medium");
-
-        setCategory("");
-
-      },
-      []
-    );
+    useCallback(() => {
+      setEditId(null);
+      setTaskText("");
+      setDueDate("");
+      setPriority("medium");
+      setCategory("");
+    }, []);
 
 
   // ========================================
@@ -1273,21 +920,14 @@ function TodoApp() {
   const handleSearch =
     useCallback(
       (e) => {
-
         const value =
           e.target.value;
 
-
         startTransition(() => {
-
           setSearch(value);
-
         });
-
       },
-      [
-        startTransition,
-      ]
+      [startTransition]
     );
 
 
@@ -1297,7 +937,6 @@ function TodoApp() {
 
   const categories =
     useMemo(() => {
-
       return [
         ...new Set(
           tasks
@@ -1308,10 +947,7 @@ function TodoApp() {
             .filter(Boolean)
         ),
       ];
-
-    }, [
-      tasks,
-    ]);
+    }, [tasks]);
 
 
   // ========================================
@@ -1320,49 +956,39 @@ function TodoApp() {
 
   const filteredTasks =
     useMemo(() => {
+      return tasks.filter((task) => {
+        const text =
+          typeof task?.text ===
+          "string"
+            ? task.text
+            : "";
 
-      return tasks.filter(
-        (task) => {
+        const matchesSearch =
+          text
+            .toLowerCase()
+            .includes(
+              search.toLowerCase()
+            );
 
-          const taskText =
-            typeof task?.text ===
-            "string"
-              ? task.text
-              : "";
+        const matchesStatus =
+          filter === "all"
+            ? true
+            : filter === "active"
+            ? !task.completed
+            : task.completed;
 
+        const matchesCategory =
+          categoryFilter === "all"
+            ? true
+            : task.category ===
+              categoryFilter;
 
-          const matchesSearch =
-            taskText
-              .toLowerCase()
-              .includes(
-                search.toLowerCase()
-              );
-
-
-          const matchesStatus =
-            filter === "all"
-              ? true
-              : filter === "active"
-              ? !task.completed
-              : task.completed;
-
-
-          const matchesCategory =
-            categoryFilter === "all"
-              ? true
-              : task.category ===
-                categoryFilter;
-
-
-          return (
-            matchesSearch &&
-            matchesStatus &&
-            matchesCategory
-          );
-
-        }
-      );
-
+        return (
+          matchesSearch &&
+          matchesStatus &&
+          matchesCategory
+        );
+      });
     }, [
       tasks,
       search,
@@ -1377,26 +1003,16 @@ function TodoApp() {
 
   const sortedTasks =
     useMemo(() => {
-
       const sorted =
         [...filteredTasks];
 
-
       const priorityValue = {
-
         high: 3,
-
         medium: 2,
-
         low: 1,
-
       };
 
-
-      if (
-        sortBy === "newest"
-      ) {
-
+      if (sortBy === "newest") {
         sorted.sort(
           (a, b) =>
             new Date(
@@ -1406,14 +1022,9 @@ function TodoApp() {
               a.createdAt
             )
         );
-
       }
 
-
-      if (
-        sortBy === "oldest"
-      ) {
-
+      if (sortBy === "oldest") {
         sorted.sort(
           (a, b) =>
             new Date(
@@ -1423,14 +1034,9 @@ function TodoApp() {
               b.createdAt
             )
         );
-
       }
 
-
-      if (
-        sortBy === "priority"
-      ) {
-
+      if (sortBy === "priority") {
         sorted.sort(
           (a, b) =>
             priorityValue[
@@ -1440,48 +1046,26 @@ function TodoApp() {
               a.priority
             ]
         );
-
       }
 
-
-      if (
-        sortBy === "dueDate"
-      ) {
-
-        sorted.sort(
-          (a, b) => {
-
-            if (!a.dueDate) {
-
-              return 1;
-
-            }
-
-
-            if (!b.dueDate) {
-
-              return -1;
-
-            }
-
-
-            return (
-              new Date(
-                a.dueDate
-              ) -
-              new Date(
-                b.dueDate
-              )
-            );
-
+      if (sortBy === "dueDate") {
+        sorted.sort((a, b) => {
+          if (!a.dueDate) {
+            return 1;
           }
-        );
 
+          if (!b.dueDate) {
+            return -1;
+          }
+
+          return (
+            new Date(a.dueDate) -
+            new Date(b.dueDate)
+          );
+        });
       }
-
 
       return sorted;
-
     }, [
       filteredTasks,
       sortBy,
@@ -1489,31 +1073,64 @@ function TodoApp() {
 
 
   // ========================================
-  // SMART SIDEBAR VIEW
+  // SMART SIDEBAR FILTER
   // ========================================
 
   const displayTasks =
     useMemo(() => {
-      const today = new Date().toLocaleDateString("en-CA");
+      const today =
+        new Date().toLocaleDateString(
+          "en-CA"
+        );
 
-      if (activeView === "important") {
-        return sortedTasks.filter((task) => task.priority === "high");
+      if (
+        activeView ===
+        "important"
+      ) {
+        return sortedTasks.filter(
+          (task) =>
+            task.priority ===
+            "high"
+        );
       }
 
-      if (activeView === "today") {
-        return sortedTasks.filter((task) => task.dueDate === today);
+      if (
+        activeView === "today"
+      ) {
+        return sortedTasks.filter(
+          (task) =>
+            task.dueDate ===
+            today
+        );
       }
 
-      if (activeView === "upcoming") {
-        return sortedTasks.filter((task) => !task.completed && task.dueDate && task.dueDate >= today);
+      if (
+        activeView ===
+        "upcoming"
+      ) {
+        return sortedTasks.filter(
+          (task) =>
+            !task.completed &&
+            task.dueDate &&
+            task.dueDate >= today
+        );
       }
 
-      if (activeView === "completed") {
-        return sortedTasks.filter((task) => task.completed);
+      if (
+        activeView ===
+        "completed"
+      ) {
+        return sortedTasks.filter(
+          (task) =>
+            task.completed
+        );
       }
 
       return sortedTasks;
-    }, [activeView, sortedTasks]);
+    }, [
+      activeView,
+      sortedTasks,
+    ]);
 
 
   // ========================================
@@ -1523,18 +1140,15 @@ function TodoApp() {
   const totalTasks =
     tasks.length;
 
-
   const completedTasks =
     tasks.filter(
       (task) =>
         task.completed
     ).length;
 
-
   const activeTasks =
     totalTasks -
     completedTasks;
-
 
   const progress =
     totalTasks === 0
@@ -1552,41 +1166,30 @@ function TodoApp() {
   // ========================================
 
   const handleLogout =
-    useCallback(
-      () => {
+    useCallback(() => {
+      dispatch(logout());
 
-        dispatch(
-          logout()
-        );
+      localStorage.removeItem(
+        "isLoggedIn"
+      );
 
+      localStorage.removeItem(
+        "user"
+      );
 
-        localStorage.removeItem(
-          "isLoggedIn"
-        );
+      sessionStorage.removeItem(
+        "isLoggedIn"
+      );
 
-        localStorage.removeItem(
-          "user"
-        );
+      sessionStorage.removeItem(
+        "user"
+      );
 
-        sessionStorage.removeItem(
-          "isLoggedIn"
-        );
-
-        sessionStorage.removeItem(
-          "user"
-        );
-
-
-        navigate(
-          "/login"
-        );
-
-      },
-      [
-        dispatch,
-        navigate,
-      ]
-    );
+      navigate("/login");
+    }, [
+      dispatch,
+      navigate,
+    ]);
 
 
   // ========================================
@@ -1596,35 +1199,24 @@ function TodoApp() {
   const handleLanguageChange =
     useCallback(
       (language) => {
-
         i18n.changeLanguage(
           language
         );
-
       },
-      [
-        i18n,
-      ]
+      [i18n]
     );
 
 
   // ========================================
-  // TOGGLE DARK MODE
+  // DARK MODE
   // ========================================
 
   const handleToggleDarkMode =
-    useCallback(
-      () => {
-
-        dispatch(
-          toggleDarkMode()
-        );
-
-      },
-      [
-        dispatch,
-      ]
-    );
+    useCallback(() => {
+      dispatch(
+        toggleDarkMode()
+      );
+    }, [dispatch]);
 
 
   // ========================================
@@ -1632,9 +1224,7 @@ function TodoApp() {
   // ========================================
 
   if (isLoading) {
-
     return (
-
       <div
         className={
           darkMode
@@ -1642,17 +1232,11 @@ function TodoApp() {
             : "app"
         }
       >
-
         <div className="todo-container">
-
           <LoadingState />
-
         </div>
-
       </div>
-
     );
-
   }
 
 
@@ -1661,9 +1245,7 @@ function TodoApp() {
   // ========================================
 
   if (isError) {
-
     return (
-
       <div
         className={
           darkMode
@@ -1671,9 +1253,7 @@ function TodoApp() {
             : "app"
         }
       >
-
         <div className="todo-container">
-
           <EmptyState
             icon="⚠️"
             title={t("backendFailed")}
@@ -1681,14 +1261,24 @@ function TodoApp() {
               "backendDescription"
             )}
           />
-
         </div>
-
       </div>
-
     );
-
   }
+
+
+  // ========================================
+  // TASK VIEWS
+  // ========================================
+
+  const isTaskView = [
+    "dashboard",
+    "tasks",
+    "today",
+    "important",
+    "upcoming",
+    "completed",
+  ].includes(activeView);
 
 
   // ========================================
@@ -1696,7 +1286,6 @@ function TodoApp() {
   // ========================================
 
   return (
-
     <div
       className={
         darkMode
@@ -1705,319 +1294,237 @@ function TodoApp() {
       }
     >
 
+      {/* SIDEBAR */}
+
       <Sidebar
         activeView={activeView}
         onNavigate={setActiveView}
         onLogout={handleLogout}
         currentUser={currentUser}
-        darkMode={darkMode}
-        onToggleDarkMode={handleToggleDarkMode}
-        language={i18n.language}
-        onLanguageChange={handleLanguageChange}
-        isOnline={isOnline}
-        mobileOpen={mobileSidebarOpen}
-        onClose={() => setMobileSidebarOpen(false)}
+        mobileOpen={
+          mobileSidebarOpen
+        }
+        onClose={() =>
+          setMobileSidebarOpen(
+            false
+          )
+        }
       />
 
+
+      {/* WORKSPACE */}
+
       <div className="workspace-shell">
+
+        {/* MOBILE MENU */}
+
         <button
           type="button"
           className="mobile-menu-button"
-          onClick={() => setMobileSidebarOpen(true)}
-          aria-label="Open navigation"
+          onClick={() =>
+            setMobileSidebarOpen(
+              true
+            )
+          }
+          aria-label={
+            t("sidebar.mainNavigation")
+          }
         >
           ☰
         </button>
 
-      {/* HEADER */}
 
-      <Header
+        {/* HEADER */}
 
-        currentUserEmail={
-          currentUserEmail
-        }
-
-        isOnline={
-          isOnline
-        }
-
-        darkMode={
-          darkMode
-        }
-
-        onToggleDarkMode={
-          handleToggleDarkMode
-        }
-
-        onLogout={
-          handleLogout
-        }
-
-        onLanguageChange={
-          handleLanguageChange
-        }
-
-        currentLanguage={i18n.language}
-
-      />
-
-
-      <WorkspacePanel
-        view={activeView}
-        tasks={tasks}
-        categories={categories}
-        currentUser={currentUser}
-        isOnline={isOnline}
-        darkMode={darkMode}
-        onToggleDarkMode={handleToggleDarkMode}
-        language={i18n.language}
-        onLanguageChange={handleLanguageChange}
-        refetch={refetch}
-        setCategoryFilter={setCategoryFilter}
-        setActiveView={setActiveView}
-      />
-
-      {/* MAIN */}
-
-      <main className={`todo-container ${["dashboard", "tasks", "today", "important", "upcoming", "completed"].includes(activeView) ? "is-task-view" : "is-panel-view"}`}>
-
-
-        {/* TASK FORM */}
-
-        <TaskForm
-
-          taskText={
-            taskText
-          }
-
-          dueDate={
-            dueDate
-          }
-
-          priority={
-            priority
-          }
-
-          category={
-            category
-          }
-
-          editId={
-            editId
-          }
-
-          taskInputId={
-            taskId
-          }
-
-          dueDateId={
-            dateId
-          }
-
-          priorityId={
-            priorityId
-          }
-
-          categoryId={
-            categoryId
-          }
-
-          taskMessage={
-            taskMessage
-          }
-
-          formError={
-            actionState.message &&
-            !actionState.success
-              ? actionState.message
-              : ""
-          }
-
-          isPending={
-            isActionPending
-          }
-
-          onTaskTextChange={
-            setTaskText
-          }
-
-          onDueDateChange={
-            setDueDate
-          }
-
-          onPriorityChange={
-            setPriority
-          }
-
-          onCategoryChange={
-            setCategory
-          }
-
-          onSubmit={
-            handleSubmit
-          }
-
-          onCancel={
-            cancelEdit
-          }
-
-          taskInputRef={
-            taskInputRef
-          }
-
+        <Header
+          isOnline={isOnline}
         />
 
 
-        {/* CONTROLS */}
+        {/* OTHER WORKSPACE PAGES */}
 
-        <TaskControls
-
-          search={
-            search
-          }
-
-          filter={
-            filter
-          }
-
-          categoryFilter={
-            categoryFilter
-          }
-
-          sortBy={
-            sortBy
-          }
-
-          categories={
-            categories
-          }
-
-          isPending={
-            isPending
-          }
-
-          onSearch={
-            handleSearch
-          }
-
-          onFilterChange={
-            setFilter
-          }
-
-          onCategoryFilterChange={
-            setCategoryFilter
-          }
-
-          onSortChange={
-            setSortBy
-          }
-
-        />
+        {!isTaskView && (
+          <WorkspacePanel
+            view={activeView}
+            tasks={tasks}
+            categories={categories}
+            currentUser={currentUser}
+            isOnline={isOnline}
+            darkMode={darkMode}
+            onToggleDarkMode={
+              handleToggleDarkMode
+            }
+            language={
+              i18n.language
+            }
+            onLanguageChange={
+              handleLanguageChange
+            }
+            refetch={refetch}
+            setCategoryFilter={
+              setCategoryFilter
+            }
+            setActiveView={
+              setActiveView
+            }
+          />
+        )}
 
 
-        {/* STATISTICS */}
+        {/* TASK VIEWS */}
 
-        <TaskStats
+        {isTaskView && (
+          <main className="todo-container is-task-view">
 
-          totalTasks={
-            totalTasks
-          }
+            {/* TASK FORM */}
 
-          activeTasks={
-            activeTasks
-          }
+            <TaskForm
+              taskText={taskText}
+              dueDate={dueDate}
+              priority={priority}
+              category={category}
+              editId={editId}
+              taskInputId={taskId}
+              dueDateId={dateId}
+              priorityId={priorityId}
+              categoryId={categoryId}
+              taskMessage={taskMessage}
+              formError={
+                actionState.message &&
+                !actionState.success
+                  ? actionState.message
+                  : ""
+              }
+              isPending={
+                isActionPending
+              }
+              onTaskTextChange={
+                setTaskText
+              }
+              onDueDateChange={
+                setDueDate
+              }
+              onPriorityChange={
+                setPriority
+              }
+              onCategoryChange={
+                setCategory
+              }
+              onSubmit={
+                handleSubmit
+              }
+              onCancel={
+                cancelEdit
+              }
+              taskInputRef={
+                taskInputRef
+              }
+            />
 
-          completedTasks={
-            completedTasks
-          }
 
-          progress={
-            progress
-          }
+            {/* CONTROLS */}
 
-        />
+            <TaskControls
+              search={search}
+              filter={filter}
+              categoryFilter={
+                categoryFilter
+              }
+              sortBy={sortBy}
+              categories={categories}
+              isPending={isPending}
+              onSearch={
+                handleSearch
+              }
+              onFilterChange={
+                setFilter
+              }
+              onCategoryFilterChange={
+                setCategoryFilter
+              }
+              onSortChange={
+                setSortBy
+              }
+            />
 
 
-        {/* PROGRESS */}
+            {/* STATISTICS */}
 
-        <ProgressBar
-          progress={
-            progress
-          }
-        />
+            <TaskStats
+              totalTasks={
+                totalTasks
+              }
+              activeTasks={
+                activeTasks
+              }
+              completedTasks={
+                completedTasks
+              }
+              progress={
+                progress
+              }
+            />
 
 
-        {/* TASK LIST */}
+            {/* PROGRESS */}
 
-        <TaskList
+            <ProgressBar
+              progress={
+                progress
+              }
+            />
 
-          tasks={
-            displayTasks
-          }
 
-          taskListRef={
-            taskListRef
-          }
+            {/* TASK LIST */}
 
-          completedTasks={
-            completedTasks
-          }
+            <TaskList
+              tasks={
+                displayTasks
+              }
+              taskListRef={
+                taskListRef
+              }
+              completedTasks={
+                completedTasks
+              }
+              onToggle={
+                handleToggle
+              }
+              onEdit={
+                handleEdit
+              }
+              onDelete={
+                handleDelete
+              }
+              onClearCompleted={
+                clearCompleted
+              }
+            />
 
-          onToggle={
-            handleToggle
-          }
+          </main>
+        )}
 
-          onEdit={
-            handleEdit
-          }
-
-          onDelete={
-            handleDelete
-          }
-
-          onClearCompleted={
-            clearCompleted
-          }
-
-        />
-
-      </main>
       </div>
 
 
       {/* COMPLETION NOTIFICATION */}
 
       {completedTask && (
-
-        <div
-          className="completion-notification"
-        >
+        <div className="completion-notification">
 
           <strong>
-
             ✓ {t("taskCompleted")}
-
           </strong>
 
           <span>
-
             {completedTask.text}
-
           </span>
 
         </div>
-
       )}
 
     </div>
-
   );
-
 }
-
-
-// ==========================================
-// EXPORT
-// ==========================================
 
 export default TodoApp;

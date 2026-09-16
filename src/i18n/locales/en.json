@@ -1,31 +1,24 @@
 {
-  "appTitle": "Todo App",
+  "appTitle": "TaskFlow",
   "appSubtitle": "Manage your tasks efficiently",
   "loggedInAs": "Logged in as",
-
   "online": "Online",
   "offline": "Offline",
-
   "light": "Light",
   "dark": "Dark",
-
   "logout": "Logout",
 
   "addNewTask": "Add New Task",
   "editTask": "Edit Task",
-
   "task": "Task",
   "category": "Category",
   "dueDate": "Due Date",
   "priority": "Priority",
-
   "enterTask": "Enter your task",
   "categoryPlaceholder": "Enter category",
-
   "low": "Low",
   "medium": "Medium",
   "high": "High",
-
   "addTask": "Add Task",
   "updateTask": "Update Task",
   "cancel": "Cancel",
@@ -33,12 +26,11 @@
 
   "searchTasks": "Search tasks...",
   "searching": "Searching...",
-
+  "tasks": "My Tasks",
   "allTasks": "All Tasks",
   "active": "Active",
   "completed": "Completed",
   "allCategories": "All Categories",
-
   "newest": "Newest",
   "oldest": "Oldest",
   "prioritySort": "Priority",
@@ -47,36 +39,282 @@
   "total": "Total",
   "progress": "Progress",
   "overallProgress": "Overall Progress",
-
   "yourTasks": "Your Tasks",
   "shown": "shown",
-
   "noTasksFound": "No tasks found",
   "noTasksDescription": "Try adding a new task or changing your filters.",
-
   "clearCompleted": "Clear Completed",
-
   "delete": "Delete",
 
   "taskAdded": "Task added successfully.",
   "taskUpdated": "Task updated successfully.",
   "taskDeleted": "Task deleted successfully.",
   "completedCleared": "Completed tasks cleared successfully.",
-
   "pleaseEnterTask": "Please enter a task.",
   "pleaseEnterCategory": "Please enter a category.",
   "userNotFound": "User information was not found.",
-
   "failedAdd": "Failed to add task.",
   "failedUpdate": "Failed to update task.",
   "failedDelete": "Failed to delete task.",
   "failedClear": "Failed to clear completed tasks.",
-
   "loadingTasks": "Loading tasks...",
   "gettingTasks": "Please wait while we get your tasks.",
-
   "backendFailed": "Backend connection failed",
   "backendDescription": "Please make sure the backend server is running.",
+  "taskCompleted": "Task completed!",
 
-  "taskCompleted": "Task completed!"
+  "sidebar": {
+    "workspace": "Workspace",
+    "dashboard": "Dashboard",
+    "tasks": "My Tasks",
+    "important": "Important",
+    "today": "Today",
+    "upcoming": "Upcoming",
+    "completed": "Completed",
+
+    "productivity": "Productivity",
+    "goals": "Goals",
+    "reminders": "Reminders",
+    "calendar": "Calendar",
+    "categories": "Categories",
+
+    "general": "General",
+    "syncCenter": "Sync Center",
+    "activity": "Activity",
+    "whatsNew": "What's New",
+    "help": "Help & Support",
+    "feedback": "Feedback",
+    "about": "About",
+
+    "settings": "Settings",
+    "mainNavigation": "Main navigation",
+    "closeMenu": "Close menu",
+    "closeSidebar": "Close sidebar",
+    "toggleTheme": "Toggle theme"
+  },
+
+  "dashboard": {
+    "title": "Dashboard",
+    "overview": "Overview",
+    "totalTasks": "Total Tasks",
+    "completedTasks": "Completed Tasks",
+    "activeTasks": "Active Tasks",
+    "pendingTasks": "Pending Tasks",
+    "recentTasks": "Recent Tasks"
+  },
+
+  "workspace": {
+    "title": "Workspace",
+    "myWorkspace": "My Workspace",
+    "allTasks": "All Tasks",
+    "panelDescription": "Everything you need to stay organized, in one place."
+  },
+
+  "productivity": {
+    "title": "Productivity",
+    "overview": "Productivity Overview",
+    "progress": "Progress",
+    "completed": "Completed",
+    "remaining": "Remaining",
+
+    "totalTasks": "Total Tasks",
+    "allTasks": "All tasks for this account",
+    "active": "Active",
+    "inProgress": "Tasks still in progress",
+    "completionRate": "{{progress}}% completion rate",
+    "categories": "Categories",
+    "uniqueCategories": "Unique categories in use",
+    "completionProgress": "Completion Progress"
+  },
+
+  "goals": {
+    "title": "Goals",
+    "addGoal": "Add Goal",
+    "yourGoals": "Your Goals",
+    "noGoals": "No goals yet",
+    "createGoal": "Create a new goal",
+
+    "dailyGoal": "Daily Completion Goal",
+    "dailyGoalDescription": "Set how many tasks you want to complete as your daily target.",
+    "saveGoal": "Save Goal",
+    "tasksCompleted": "tasks completed"
+  },
+
+  "reminders": {
+    "title": "Reminders",
+    "addReminder": "Add Reminder",
+    "yourReminders": "Your Reminders",
+    "noReminders": "No reminders yet",
+
+    "upcomingReminders": "Upcoming Reminders",
+    "noUpcoming": "No upcoming due dates. Add a due date to a task to see reminders here."
+  },
+
+  "calendar": {
+    "title": "Calendar",
+    "today": "Today",
+    "month": "Month",
+    "week": "Week",
+    "day": "Day",
+
+    "taskCalendar": "Task Calendar",
+    "noDueDates": "No tasks have due dates yet."
+  },
+
+  "categories": {
+    "title": "Categories",
+    "addCategory": "Add Category",
+    "yourCategories": "Your Categories",
+    "noCategories": "No categories yet",
+
+    "createTaskWithCategory": "Create a task with a category to start organizing your work.",
+    "task": "task",
+    "tasks": "tasks"
+  },
+
+  "sync": {
+    "title": "Sync Center",
+    "syncNow": "Sync Now",
+    "lastSynced": "Last Synced",
+    "synced": "Synced",
+    "syncing": "Syncing...",
+
+    "connection": "Connection",
+    "backendAvailable": "Backend connection can be used.",
+    "checkConnection": "Check your network and backend server.",
+    "tasksSynced": "Tasks Synced",
+    "loadedThroughRtk": "Loaded through RTK Query",
+    "refreshDescription": "Refresh the task collection from the backend database.",
+    "refreshData": "Refresh Data"
+  },
+
+  "activity": {
+    "title": "Activity",
+    "recentActivity": "Recent Activity",
+    "noActivity": "No recent activity"
+  },
+
+  "feed": {
+    "title": "Activity Feed",
+    "recentActivity": "Recent Activity",
+    "noFeed": "No activity yet.",
+    "completed": "Completed",
+    "created": "Created"
+  },
+
+  "help": {
+    "title": "Help & Support",
+    "faq": "Frequently Asked Questions",
+    "contactSupport": "Contact Support",
+
+    "gettingStarted": "Getting Started",
+    "gettingStartedDescription": "Create a task, choose a priority and category, then add a due date when needed.",
+    "keyboardFriendly": "Keyboard Friendly",
+    "keyboardDescription": "All navigation controls are standard buttons and form fields.",
+    "needMoreHelp": "Need More Help?",
+    "moreHelpDescription": "Check the task filters first. If data does not load, open Sync Center and verify that the backend is running on port 5000."
+  },
+
+  "feedback": {
+    "title": "Feedback",
+    "yourFeedback": "Your Feedback",
+    "sendFeedback": "Send Feedback",
+    "placeholder": "Tell us what you would improve...",
+    "thanks": "Thanks — your feedback was saved for this session."
+  },
+
+  "about": {
+    "title": "About",
+    "description": "TaskFlow helps you organize your tasks and stay productive.",
+
+    "app": "App",
+    "modernWorkspace": "Modern React productivity workspace",
+    "frontend": "Frontend",
+    "frontendDescription": "React and Redux Toolkit",
+    "backend": "Backend",
+    "backendDescription": "SQLite-powered REST API",
+    "builtForLearning": "Built for Learning",
+    "learningDescription": "This project demonstrates modern React, state management, API data fetching, reusable components, routing and responsive UI patterns."
+  },
+
+  "whatsNew": {
+    "title": "What's New",
+    "description": "Discover the latest TaskFlow updates.",
+
+    "sidebarNavigation": "Professional sidebar navigation",
+    "smartViews": "Today, Important, Upcoming and Completed smart views",
+    "productivityGoals": "Productivity and goal tracking",
+    "calendarReminders": "Calendar, reminders and category management",
+    "mobileNavigation": "Responsive mobile navigation and polished dashboard interactions"
+  },
+
+  "settings": {
+    "title": "Settings",
+    "appearance": "Appearance",
+    "language": "Language",
+    "theme": "Theme",
+    "notifications": "Notifications",
+    "account": "Account",
+    "security": "Privacy & Security"
+  },
+
+  "profile": {
+    "title": "Profile",
+    "name": "Name",
+    "email": "Email",
+    "editProfile": "Edit Profile",
+    "saveChanges": "Save Changes"
+  },
+
+  "notifications": {
+    "title": "Notifications",
+    "enable": "Enable Notifications",
+    "noNotifications": "No notifications yet",
+
+    "taskCompletion": "Task Completion Notifications",
+    "taskCompletionDescription": "Show a confirmation when a task is completed.",
+    "compactList": "Compact Task List",
+    "compactListDescription": "Reduce spacing in the task list."
+  },
+
+  "privacy": {
+    "title": "Privacy & Security",
+    "security": "Security",
+    "privacy": "Privacy",
+    "accountSecurity": "Account Security",
+
+    "demoDescription": "Your current demo authentication stores account data locally in the browser. Do not use real passwords in this learning build.",
+    "productionNote": "For a production release, move authentication to the backend, hash passwords and use secure sessions or tokens."
+  },
+
+  "theme": {
+    "title": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+
+    "appearance": "Appearance",
+    "description": "Choose the visual mode for your workspace."
+  },
+
+  "language": {
+    "title": "Language",
+    "english": "English",
+    "urdu": "Urdu",
+    "description": "Switch between the supported workspace languages."
+  },
+
+  "account": {
+    "title": "Account Settings",
+    "profile": "Profile",
+    "email": "Email",
+    "accountInformation": "Account Information",
+    "notProvided": "Not provided"
+  },
+
+  "priorityLabels": {
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High"
+  }
 }

@@ -1,31 +1,24 @@
 {
-  "appTitle": "ٹو ڈو ایپ",
-  "appSubtitle": "اپنے کام آسانی سے منظم کریں",
+  "appTitle": "ٹاسک فلو",
+  "appSubtitle": "اپنے کام مؤثر طریقے سے منظم کریں",
   "loggedInAs": "لاگ اِن ہیں",
-
   "online": "آن لائن",
   "offline": "آف لائن",
-
   "light": "لائٹ",
   "dark": "ڈارک",
-
   "logout": "لاگ آؤٹ",
 
   "addNewTask": "نیا کام شامل کریں",
   "editTask": "کام میں ترمیم کریں",
-
   "task": "کام",
   "category": "کیٹیگری",
   "dueDate": "آخری تاریخ",
   "priority": "ترجیح",
-
   "enterTask": "اپنا کام لکھیں",
   "categoryPlaceholder": "کیٹیگری لکھیں",
-
   "low": "کم",
   "medium": "درمیانی",
   "high": "زیادہ",
-
   "addTask": "کام شامل کریں",
   "updateTask": "کام اپڈیٹ کریں",
   "cancel": "منسوخ کریں",
@@ -33,12 +26,11 @@
 
   "searchTasks": "کام تلاش کریں...",
   "searching": "تلاش جاری ہے...",
-
+  "tasks": "میرے کام",
   "allTasks": "تمام کام",
   "active": "فعال",
   "completed": "مکمل",
   "allCategories": "تمام کیٹیگریز",
-
   "newest": "نئے پہلے",
   "oldest": "پرانے پہلے",
   "prioritySort": "ترجیح",
@@ -47,36 +39,282 @@
   "total": "کل",
   "progress": "پیش رفت",
   "overallProgress": "مجموعی پیش رفت",
-
   "yourTasks": "آپ کے کام",
   "shown": "دکھائے جا رہے ہیں",
-
   "noTasksFound": "کوئی کام نہیں ملا",
   "noTasksDescription": "نیا کام شامل کریں یا اپنے فلٹرز تبدیل کریں۔",
-
   "clearCompleted": "مکمل کام ختم کریں",
-
   "delete": "حذف کریں",
 
   "taskAdded": "کام کامیابی سے شامل ہو گیا۔",
   "taskUpdated": "کام کامیابی سے اپڈیٹ ہو گیا۔",
   "taskDeleted": "کام کامیابی سے حذف ہو گیا۔",
   "completedCleared": "مکمل کام کامیابی سے ختم کر دیے گئے۔",
-
   "pleaseEnterTask": "براہِ کرم کام درج کریں۔",
   "pleaseEnterCategory": "براہِ کرم کیٹیگری درج کریں۔",
   "userNotFound": "صارف کی معلومات نہیں ملیں۔",
-
   "failedAdd": "کام شامل نہیں ہو سکا۔",
   "failedUpdate": "کام اپڈیٹ نہیں ہو سکا۔",
   "failedDelete": "کام حذف نہیں ہو سکا۔",
   "failedClear": "مکمل کام ختم نہیں ہو سکے۔",
-
   "loadingTasks": "کام لوڈ ہو رہے ہیں...",
   "gettingTasks": "براہِ کرم انتظار کریں، آپ کے کام حاصل کیے جا رہے ہیں۔",
-
   "backendFailed": "بیک اینڈ سے کنکشن ناکام ہو گیا",
   "backendDescription": "براہِ کرم یقینی بنائیں کہ بیک اینڈ سرور چل رہا ہے۔",
+  "taskCompleted": "کام مکمل ہو گیا!",
 
-  "taskCompleted": "کام مکمل ہو گیا!"
+  "sidebar": {
+    "workspace": "ورک اسپیس",
+    "dashboard": "ڈیش بورڈ",
+    "tasks": "میرے کام",
+    "important": "اہم",
+    "today": "آج",
+    "upcoming": "آنے والے",
+    "completed": "مکمل شدہ",
+
+    "productivity": "کارکردگی",
+    "goals": "اہداف",
+    "reminders": "یاد دہانیاں",
+    "calendar": "کیلنڈر",
+    "categories": "کیٹیگریز",
+
+    "general": "عمومی",
+    "syncCenter": "ہم وقت سازی مرکز",
+    "activity": "سرگرمیاں",
+    "whatsNew": "نیا کیا ہے",
+    "help": "مدد اور معاونت",
+    "feedback": "رائے",
+    "about": "ہمارے بارے میں",
+
+    "settings": "ترتیبات",
+    "mainNavigation": "مرکزی نیویگیشن",
+    "closeMenu": "مینو بند کریں",
+    "closeSidebar": "سائیڈبار بند کریں",
+    "toggleTheme": "تھیم تبدیل کریں"
+  },
+
+  "dashboard": {
+    "title": "ڈیش بورڈ",
+    "overview": "جائزہ",
+    "totalTasks": "کل کام",
+    "completedTasks": "مکمل شدہ کام",
+    "activeTasks": "فعال کام",
+    "pendingTasks": "زیرِ التوا کام",
+    "recentTasks": "حالیہ کام"
+  },
+
+  "workspace": {
+    "title": "ورک اسپیس",
+    "myWorkspace": "میری ورک اسپیس",
+    "allTasks": "تمام کام",
+    "panelDescription": "منظم رہنے کے لیے درکار تمام چیزیں ایک ہی جگہ پر موجود ہیں۔"
+  },
+
+  "productivity": {
+    "title": "کارکردگی",
+    "overview": "کارکردگی کا جائزہ",
+    "progress": "پیش رفت",
+    "completed": "مکمل شدہ",
+    "remaining": "باقی",
+
+    "totalTasks": "کل کام",
+    "allTasks": "اس اکاؤنٹ کے تمام کام",
+    "active": "فعال کام",
+    "inProgress": "وہ کام جو ابھی جاری ہیں",
+    "completionRate": "{{progress}}٪ کام مکمل",
+    "categories": "کیٹیگریز",
+    "uniqueCategories": "استعمال ہونے والی منفرد کیٹیگریز",
+    "completionProgress": "کام مکمل ہونے کی پیش رفت"
+  },
+
+  "goals": {
+    "title": "اہداف",
+    "addGoal": "ہدف شامل کریں",
+    "yourGoals": "آپ کے اہداف",
+    "noGoals": "ابھی کوئی ہدف نہیں",
+    "createGoal": "نیا ہدف بنائیں",
+
+    "dailyGoal": "روزانہ کام مکمل کرنے کا ہدف",
+    "dailyGoalDescription": "طے کریں کہ آپ روزانہ کتنے کام مکمل کرنا چاہتے ہیں۔",
+    "saveGoal": "ہدف محفوظ کریں",
+    "tasksCompleted": "کام مکمل ہوئے"
+  },
+
+  "reminders": {
+    "title": "یاد دہانیاں",
+    "addReminder": "یاد دہانی شامل کریں",
+    "yourReminders": "آپ کی یاد دہانیاں",
+    "noReminders": "ابھی کوئی یاد دہانی نہیں",
+
+    "upcomingReminders": "آنے والی یاد دہانیاں",
+    "noUpcoming": "ابھی کوئی قریبی آخری تاریخ نہیں۔ یاد دہانی دیکھنے کے لیے کسی کام کی آخری تاریخ شامل کریں۔"
+  },
+
+  "calendar": {
+    "title": "کیلنڈر",
+    "today": "آج",
+    "month": "مہینہ",
+    "week": "ہفتہ",
+    "day": "دن",
+
+    "taskCalendar": "کاموں کا کیلنڈر",
+    "noDueDates": "ابھی کسی کام کی آخری تاریخ مقرر نہیں ہے۔"
+  },
+
+  "categories": {
+    "title": "کیٹیگریز",
+    "addCategory": "کیٹیگری شامل کریں",
+    "yourCategories": "آپ کی کیٹیگریز",
+    "noCategories": "ابھی کوئی کیٹیگری نہیں",
+
+    "createTaskWithCategory": "اپنے کام منظم کرنے کے لیے کیٹیگری کے ساتھ کوئی کام بنائیں۔",
+    "task": "کام",
+    "tasks": "کام"
+  },
+
+  "sync": {
+    "title": "ہم وقت سازی مرکز",
+    "syncNow": "ابھی ہم وقت سازی کریں",
+    "lastSynced": "آخری بار ہم وقت سازی",
+    "synced": "ہم وقت سازی مکمل",
+    "syncing": "ہم وقت سازی جاری ہے...",
+
+    "connection": "کنکشن",
+    "backendAvailable": "بیک اینڈ کنکشن استعمال کیا جا سکتا ہے۔",
+    "checkConnection": "اپنا نیٹ ورک اور بیک اینڈ سرور چیک کریں۔",
+    "tasksSynced": "ہم وقت شدہ کام",
+    "loadedThroughRtk": "آر ٹی کے کیوری کے ذریعے حاصل کیے گئے",
+    "refreshDescription": "بیک اینڈ ڈیٹا بیس سے کاموں کی فہرست دوبارہ حاصل کریں۔",
+    "refreshData": "ڈیٹا تازہ کریں"
+  },
+
+  "activity": {
+    "title": "سرگرمیاں",
+    "recentActivity": "حالیہ سرگرمیاں",
+    "noActivity": "ابھی کوئی حالیہ سرگرمی نہیں"
+  },
+
+  "feed": {
+    "title": "سرگرمیوں کی فیڈ",
+    "recentActivity": "حالیہ سرگرمیاں",
+    "noFeed": "ابھی کوئی سرگرمی نہیں۔",
+    "completed": "مکمل کیا گیا",
+    "created": "بنایا گیا"
+  },
+
+  "help": {
+    "title": "مدد اور معاونت",
+    "faq": "اکثر پوچھے جانے والے سوالات",
+    "contactSupport": "معاونت سے رابطہ کریں",
+
+    "gettingStarted": "شروع کرنے کا طریقہ",
+    "gettingStartedDescription": "ایک کام بنائیں، ترجیح اور کیٹیگری منتخب کریں، اور ضرورت کے مطابق آخری تاریخ شامل کریں۔",
+    "keyboardFriendly": "کی بورڈ کے لیے موزوں",
+    "keyboardDescription": "تمام نیویگیشن کنٹرولز عام بٹن اور فارم فیلڈز ہیں۔",
+    "needMoreHelp": "مزید مدد چاہیے؟",
+    "moreHelpDescription": "سب سے پہلے کاموں کے فلٹرز چیک کریں۔ اگر ڈیٹا لوڈ نہ ہو تو ہم وقت سازی مرکز کھولیں اور یقینی بنائیں کہ بیک اینڈ پورٹ 5000 پر چل رہا ہے۔"
+  },
+
+  "feedback": {
+    "title": "رائے",
+    "yourFeedback": "آپ کی رائے",
+    "sendFeedback": "رائے بھیجیں",
+    "placeholder": "بتائیں کہ آپ کیا بہتر کرنا چاہیں گے...",
+    "thanks": "شکریہ — آپ کی رائے اس سیشن کے لیے محفوظ کر لی گئی ہے۔"
+  },
+
+  "about": {
+    "title": "ہمارے بارے میں",
+    "description": "ٹاسک فلو آپ کے کام منظم کرنے اور کارکردگی بہتر رکھنے میں مدد کرتا ہے۔",
+
+    "app": "ایپ",
+    "modernWorkspace": "جدید کاموں کو منظم کرنے کا پلیٹ فارم",
+    "frontend": "فرنٹ اینڈ",
+    "frontendDescription": "ری ایکٹ اور ریڈکس ٹول کٹ",
+    "backend": "بیک اینڈ",
+    "backendDescription": "ایکسپریس اور ایس کیو لائٹ پر مبنی ریسٹ اے پی آئی",
+    "builtForLearning": "سیکھنے کے لیے بنایا گیا",
+    "learningDescription": "یہ پروجیکٹ جدید ری ایکٹ، اسٹیٹ مینجمنٹ، اے پی آئی ڈیٹا حاصل کرنے، دوبارہ استعمال ہونے والے اجزاء، روٹنگ اور ریسپانسیو یوزر انٹرفیس کے طریقوں کو ظاہر کرتا ہے۔"
+  },
+
+  "whatsNew": {
+    "title": "نیا کیا ہے",
+    "description": "ٹاسک فلو کی تازہ ترین اپڈیٹس دیکھیں۔",
+
+    "sidebarNavigation": "پیشہ ورانہ سائیڈبار نیویگیشن",
+    "smartViews": "آج، اہم، آنے والے اور مکمل شدہ کاموں کے اسمارٹ ویوز",
+    "productivityGoals": "کارکردگی اور اہداف کی نگرانی",
+    "calendarReminders": "کیلنڈر، یاد دہانیوں اور کیٹیگریز کا انتظام",
+    "mobileNavigation": "موبائل کے لیے ریسپانسیو نیویگیشن اور بہتر ڈیش بورڈ تجربہ"
+  },
+
+  "settings": {
+    "title": "ترتیبات",
+    "appearance": "ظاہری شکل",
+    "language": "زبان",
+    "theme": "تھیم",
+    "notifications": "اطلاعات",
+    "account": "اکاؤنٹ",
+    "security": "رازداری اور سیکیورٹی"
+  },
+
+  "profile": {
+    "title": "پروفائل",
+    "name": "نام",
+    "email": "ای میل",
+    "editProfile": "پروفائل میں ترمیم کریں",
+    "saveChanges": "تبدیلیاں محفوظ کریں"
+  },
+
+  "notifications": {
+    "title": "اطلاعات",
+    "enable": "اطلاعات فعال کریں",
+    "noNotifications": "ابھی کوئی اطلاع نہیں",
+
+    "taskCompletion": "کام مکمل ہونے کی اطلاعات",
+    "taskCompletionDescription": "کام مکمل ہونے پر تصدیقی پیغام دکھائیں۔",
+    "compactList": "مختصر کاموں کی فہرست",
+    "compactListDescription": "کاموں کی فہرست میں جگہ کم کریں۔"
+  },
+
+  "privacy": {
+    "title": "رازداری اور سیکیورٹی",
+    "security": "سیکیورٹی",
+    "privacy": "رازداری",
+    "accountSecurity": "اکاؤنٹ سیکیورٹی",
+
+    "demoDescription": "آپ کے موجودہ ڈیمو تصدیقی نظام میں اکاؤنٹ کی معلومات براؤزر میں مقامی طور پر محفوظ ہوتی ہیں۔ اس سیکھنے والے ورژن میں اصلی پاس ورڈ استعمال نہ کریں۔",
+    "productionNote": "پروڈکشن ورژن کے لیے تصدیقی نظام کو بیک اینڈ پر منتقل کریں، پاس ورڈز کو محفوظ طریقے سے خفیہ کریں اور محفوظ سیشنز یا ٹوکنز استعمال کریں۔"
+  },
+
+  "theme": {
+    "title": "تھیم",
+    "light": "لائٹ",
+    "dark": "ڈارک",
+    "system": "سسٹم",
+
+    "appearance": "ظاہری شکل",
+    "description": "اپنے ورک اسپیس کے لیے ظاہری انداز منتخب کریں۔"
+  },
+
+  "language": {
+    "title": "زبان",
+    "english": "انگریزی",
+    "urdu": "اردو",
+    "description": "ورک اسپیس میں دستیاب زبانوں کے درمیان تبدیل کریں۔"
+  },
+
+  "account": {
+    "title": "اکاؤنٹ کی ترتیبات",
+    "profile": "پروفائل",
+    "email": "ای میل",
+    "accountInformation": "اکاؤنٹ کی معلومات",
+    "notProvided": "فراہم نہیں کیا گیا"
+  },
+
+  "priorityLabels": {
+    "low": "کم",
+    "medium": "درمیانی",
+    "high": "زیادہ"
+  }
 }

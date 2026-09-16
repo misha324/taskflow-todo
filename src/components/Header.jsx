@@ -1,57 +1,40 @@
 import { useTranslation } from "react-i18next";
 
-function Header({
-  currentUserEmail,
-  isOnline,
-  darkMode,
-  onToggleDarkMode,
-  onLogout,
-  onLanguageChange,
-  currentLanguage,
-}) {
-  const { t } = useTranslation();
+function Header({ isOnline }) {
+  const { t, i18n } = useTranslation();
+
+  const isUrdu = i18n.language === "ur";
 
   return (
     <header className="app-header">
-      <div>
-        <h1>{t("appTitle")}</h1>
-        <p>{t("appSubtitle")}</p>
+      <div className="header-left">
 
-        {currentUserEmail && (
-          <small>
-            {t("loggedInAs")}: {currentUserEmail}
-          </small>
-        )}
-      </div>
-
-      <div className="header-actions">
-        <span className={isOnline ? "online-status" : "offline-status"}>
-          {isOnline ? t("online") : t("offline")}
-        </span>
-
-        <button
-          type="button"
-          onClick={onToggleDarkMode}
-          className="theme-btn"
+        {/* ONLINE STATUS */}
+        <div
+          className={`header-status ${
+            isOnline ? "online" : "offline"
+          }`}
         >
-          {darkMode ? t("light") : t("dark")}
-        </button>
+          <span className="header-status-dot" />
 
-        <select
-          value={currentLanguage}
-          onChange={(e) => onLanguageChange(e.target.value)}
-        >
-          <option value="en">English</option>
-          <option value="ur">اردو</option>
-        </select>
+          <span>
+            {isOnline
+              ? t("online")
+              : t("offline")}
+          </span>
+        </div>
 
-        <button
-          type="button"
-          onClick={onLogout}
-          className="logout-btn"
+        {/* TITLE */}
+        <div
+          className={`header-title ${
+            isUrdu ? "urdu-header-title" : ""
+          }`}
         >
-          {t("logout")}
-        </button>
+          <h1>{t("appTitle")}</h1>
+
+          <p>{t("appSubtitle")}</p>
+        </div>
+
       </div>
     </header>
   );
